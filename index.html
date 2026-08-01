@@ -193,61 +193,6 @@
         </div>
     </div>
 
-<!-- BACKGROUND MUSIC - Maher Zain Barakallahu Lakuma -->
-<audio id="bg-music" loop autoplay preload="auto">
-    <source src="https://lh3.googleusercontent.com/d/1tkQZK2gNrn_FnhZHaCyquwnYZ_tjjFsA" type="audio/mpeg">
-    Your browser does not support the audio element.
-</audio>
-
-<button id="music-control" onclick="toggleMusic()" class="fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full bg-gold-400 text-weddingBlue-950 flex items-center justify-center shadow-2xl border border-white focus:outline-none transition-all duration-300 transform hover:scale-110">
-    <i id="music-icon" class="fa-solid fa-music text-lg animate-spin" style="animation-duration: 3s;"></i>
-</button>
-
-<script>
-    const audio = document.getElementById('bg-music');
-    const musicControl = document.getElementById('music-control');
-    const musicIcon = document.getElementById('music-icon');
-
-    // Fungsi untuk memutar audio
-    function playAudio() {
-        audio.play().then(() => {
-            musicControl.classList.remove('hidden');
-            musicIcon.classList.add('animate-spin');
-        }).catch(error => {
-            console.log("Autoplay diblokir oleh browser. Menunggu interaksi pengguna:", error);
-        });
-    }
-
-    // Mencoba memutar audio saat halaman selesai dimuat
-    window.addEventListener('DOMContentLoaded', () => {
-        playAudio();
-
-        // Solusi pembatasan Autoplay Browser: 
-        // Memutar lagu secara otomatis pada klik/sentuhan pertama pengguna di layar jika diblokir di awal
-        const playOnInteraction = () => {
-            if (audio.paused) {
-                playAudio();
-            }
-            // Hapus listener setelah interaksi pertama
-            document.removeEventListener('click', playOnInteraction);
-            document.removeEventListener('touchstart', playOnInteraction);
-        };
-
-        document.addEventListener('click', playOnInteraction);
-        document.addEventListener('touchstart', playOnInteraction);
-    });
-
-    // Fungsi Toggle Play / Pause tombol
-    function toggleMusic() {
-        if (audio.paused) {
-            audio.play();
-            musicIcon.classList.add('animate-spin');
-        } else {
-            audio.pause();
-            musicIcon.classList.remove('animate-spin');
-        }
-    }
-</script>
     <!-- MAIN CONTENT (Sembunyikan scroll sebelum undangan dibuka) -->
     <div id="main-content" class="opacity-0 transition-opacity duration-1000">
         
